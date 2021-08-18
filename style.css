@@ -9,41 +9,129 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
-canvas#three {
-  width: 100%;
-  height: 100%;
+button,
+label {
+  box-sizing: border-box;
+  appearance: none;
+  border: none;
+  min-width: 5rem;
+  color: #c0c0c0;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.125rem;
+  border: 0.0675em solid #404040;
+  background: rgba(128, 128, 128, 0.25);
+  box-shadow: 0 0.125em #101010;
+  text-shadow: 0 0.0625em #202020;
+  user-select: none;
+  cursor: pointer;
+}
+button:hover,
+label:hover {
+  background: rgba(128, 128, 128, 0.5);
+}
+button#webaudio,
+label#webaudio {
+  position: absolute;
+  bottom: 5rem;
+  left: 2rem;
 }
 
-#click {
-  display: inline-block;
+#tone-content {
+  /* Magenta and Tone.js */
+  width: calc(66.66% - 8rem);
+  max-width: 24rem;
   position: absolute;
+  bottom: 5rem;
   left: 50%;
-  bottom: 50%;
-  transform: translate3d(-50%, -50%, 0);
-  padding: 1rem 2rem;
-  border-radius: 0.25em;
-  background: #4040c0;
-  color: #c0c0c0;
-  font-size: 1.25em;
-  font-weight: 700;
+  transform: translateX(-50%);
+  color: white;
+  line-height: 1;
+}
+#tone-content code {
+  position: absolute;
+  top: 100%;
+}
+#tone-content code#playback {
+  right: 0;
   cursor: pointer;
-  user-select: none;
-  box-shadow: 0 0.125em #202080;
-  text-shadow: 0 0.125em #202080;
-  transition: margin 0.125s, left 0.5s, bottom 0.5s;
 }
-#click:hover {
-  background: #202080;
-  margin-bottom: 0.125em;
-}
-#click.small {
-  transform: translate3d(1em, -50%, 0);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  bottom: 0;
+#tone-content code#score {
   left: 0;
-  opacity: 0.25;
 }
-#click.small:hover {
-  opacity: 0.5;
+#tone-content details {
+  color: #fff;
+  user-select: none;
+  position: relative;
+  padding-bottom: 1em;
+}
+#tone-content details summary {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+#tone-content details textarea#midiJSON {
+  font-family: monospace;
+  height: 8em;
+  width: 100%;
+  box-sizing: border-box;
+}
+#tone-content #midiSequence {
+  position: absolute;
+  bottom: 3rem;
+  width: 100%;
+  height: 6rem;
+  overflow: hidden;
+  overflow-x: auto;
+  z-index: -1;
+}
+#tone-content #midiSequence #magenta {
+  display: block;
+  width: auto !important;
+  height: 100% !important;
+  pointer-events: none;
+}
+#tone-content label#midiLabel {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-style: dashed;
+}
+#tone-content label#midiLabel input#midiFile {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+* {
+  /* Works on Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #c0c0c0 rgba(128, 128, 128, 0.25);
+  /* Works on Chrome, Edge, and Safari */
+}
+*::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(128, 128, 128, 0.25);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border: 0.125rem solid rgba(128, 128, 128, 0.25);
+}
+
+button,
+label,
+details,
+textarea {
+  font-size: 0.75rem;
 }

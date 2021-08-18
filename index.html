@@ -2,19 +2,34 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Audio Visualizer (Geiss?)</title>
+  <title>CodePen - Web Audio Visualizer w/ MIDI</title>
   <script>
-let  vis, data, context;
+let vis;
 </script><link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<button id="click">Play</button>
+<button id="webaudio" class="paused">Web Audio</button>
+
+<div id="tone-content">
+  <details>
+    <summary>JSON</summary>
+    <textarea id="midiJSON" placeholder="Magenta sequence&hellip;"></textarea>
+  </details>
+  <div id="midiSequence">
+    <svg id="magenta" version="1.1" viewBox="0 0 1 1"></svg>
+  </div>
+  <label id="midiLabel" for="midiFile">
+    <span>MIDI file</span>
+    <input id="midiFile" type="file" accept="audio/midi, audio/x-midi">
+  </label>
+  <code id="playback"></code>
+  <code id="score"></code>
+</div>
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js'></script>
-<script src='https://assets.codepen.io/697675/ammo.wasm.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script><script type="module" src="./script.js"></script>
+  <script src='https://assets.codepen.io/697675/ammo.wasm.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@magenta/music@1.22.1'></script><script type="module" src="./script.js"></script>
 
 </body>
 </html>
