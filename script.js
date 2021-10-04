@@ -18,7 +18,7 @@ vis = {
     intensity: 1,
     primary: { hex: "#4040c0" },
     accents: { hex: "#c04040" },
-    loss: 3,
+    loss: 5,
     //music
     delay: 5,
     iso: 15 / 128
@@ -1458,7 +1458,7 @@ vis = {
         }
       }
 
-      if (vis.cfg.demo && vars.frame % 60 == 0) {
+      if (vis.cfg.demo && vars.frame % 60 == 0 && vars.frame>240) {
         // DEMO
         // tempo at MIDI bpm or default
         const tempo = time.tempo ? time.tempo.bar * 1000 : 2000;
