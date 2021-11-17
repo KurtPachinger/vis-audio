@@ -1,0 +1,146 @@
+$white: #c0c0c0;
+$background: rgba(128, 128, 128, 0.25);
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  font-family: Helvetica, sans-serif;
+}
+
+button,
+label {
+  box-sizing: border-box;
+  appearance: none;
+  border: none;
+  min-width: 5rem;
+  color: $white;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.125rem;
+  border: 0.0675em solid #404040;
+  background: $background;
+  box-shadow: 0 0.125em #101010;
+  text-shadow: 0 0.0625em #202020;
+  user-select: none;
+  cursor: pointer;
+  &:hover {
+    background: rgba(128, 128, 128, 0.5);
+  }
+
+  &#webaudio {
+    position: absolute;
+    bottom: 5rem;
+    left: 2rem;
+  }
+}
+
+#tone-content {
+  /* Magenta and Tone.js */
+  width: calc(66.66% - 8rem);
+  max-width: 24rem;
+  position: absolute;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  code {
+    position: absolute;
+    top: 100%;
+    &#playback {
+      right: 0;
+      cursor: pointer;
+    }
+    &#score {
+      left: 0;
+    }
+  }
+
+  details {
+    color: #fff;
+    user-select: none;
+    position: relative;
+    padding-bottom: 1em;
+    summary {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    textarea#midiJSON {
+      font-family: monospace;
+      height: 8em;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  #midiSequence {
+    position: absolute;
+    bottom: 3rem;
+    width: 100%;
+    height: 6rem;
+    overflow: hidden;
+    overflow-x: auto;
+    z-index: -1;
+    #magenta {
+      display: block;
+      width: auto !important;
+      height: 100% !important;
+      //image-rendering: pixelated;
+      pointer-events: none;
+    }
+  }
+
+  label#midiLabel {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-style: dashed;
+    input#midiFile {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+  line-height: 1;
+}
+
+* {
+  /* Works on Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: $white $background;
+
+  /* Works on Chrome, Edge, and Safari */
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $white;
+    border: 0.125rem solid $background;
+  }
+}
+
+button,
+label,
+details,
+textarea {
+  font-size: 0.75rem;
+}
