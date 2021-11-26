@@ -789,18 +789,18 @@ vis = {
           nDepth = 0;
 
         if (type == "spectrum") {
-          dummy.scale.set(0.25, 20, 20);
+          dummy.scale.set(0.25, 8, 8);
           nDepth = Math.floor(i / max.count) / max.depth;
-          let fScale = (nFreq * nDepth) / 2;
+          let fScale = nFreq * nDepth;
           let orbit = new THREE.Vector3();
           vars.camera.userData.orbit.getWorldPosition(orbit);
 
           // chase camera position and scale tier
-          dPos.lerp(orbit, fScale);
+          dPos.lerp(orbit, fScale*1.33);
           dummy.rotateY((-Math.PI / 4) * nDepth);
           dummy.rotateX((-Math.PI / 8) * nDepth);
-          dummy.scale.y *= 1 - fScale;
-          dummy.scale.z *= 1 - fScale;
+          dummy.scale.y *= 1 + (fScale*4);
+          dummy.scale.z *= 1 + (fScale*4);
         } else if (type == "oscillator") {
           dummy.scale.set(0.25, 80, 80);
           nDepth = (i % max.count) / max.count;
